@@ -1,0 +1,42 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: GitHub Action for Yarn
+        uses: Borales/actions-yarn@v2.1.0
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v1
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: v1-zinogre-${{ hashFiles('yarn.lock') }}
+
+      - run: yarn install
+
+      - run: yarn build
+
+      - name: GitHub Pages action
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          # Set a generated GITHUB_TOKEN for pushing to the remote branch.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Set an input directory for deployment.
+          publish_dir: build
