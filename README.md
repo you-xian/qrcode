@@ -15,3 +15,14 @@ Once everything setup correctl, start the workspace server so you will see the r
 ```bash
 yarn start
 ```
+
+## test
+```bash
+yarn server
+```
+
+## deploy to github page
+
+```bash
+yarn build && yarn deploy
+```
