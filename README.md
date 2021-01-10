@@ -10,7 +10,7 @@ yarn install
 
 ## Start
 
-Once everything setup correctl, start the workspace server so you will see the result at `localhost:3000` by default.  
+Once everything setup, start the workspace server so you will see the result at `localhost:3000` by default.  
 
 ```bash
 yarn start
