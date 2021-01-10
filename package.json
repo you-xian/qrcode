@@ -30,6 +30,7 @@
     "enzyme-to-json": "^3.4.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
+    "gh-pages": "^3.1.0",
     "lite-server": "^2.5.4",
     "react-scripts": "3.1.2",
     "react-test-renderer": "^16.9.0",
@@ -44,7 +45,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint -c .eslintrc.json 'src/**/*.tsx'",
     "lint:fix": "yarn lint --fix",
-    "server": "lite-server -c lite-server.json"
+    "server": "lite-server -c lite-server.json",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
