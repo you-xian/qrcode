@@ -31,7 +31,25 @@ jobs:
 
       - run: yarn install
 
+      - run: yarn test
+
       - run: yarn build
+
+      - name: Upload Production Build
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Production Build
+        uses: actions/download-artifact@v2
+        with:
+          name: build
 
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v3.7.3
