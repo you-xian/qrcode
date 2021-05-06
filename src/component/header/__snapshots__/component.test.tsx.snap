@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> It should match snapshot 1`] = `
+<WithStyles(ForwardRef(AppBar))
+  position="static"
+>
+  <WithStyles(ForwardRef(Toolbar))>
+    <WithStyles(ForwardRef(Typography))
+      className="makeStyles-title-3"
+      variant="h6"
+    >
+      <WithStyles(ForwardRef(IconButton))
+        color="inherit"
+      >
+        <Memo(ForwardRef(HomeIcon))
+          className="makeStyles-icon-1"
+        />
+      </WithStyles(ForwardRef(IconButton))>
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Toolbar))>
+</WithStyles(ForwardRef(AppBar))>
+`;

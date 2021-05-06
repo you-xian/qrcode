@@ -1,9 +1,23 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./component";
+import { ThemeProvider } from "@material-ui/styles";
+import { shallow, ShallowWrapper } from 'enzyme';
+import React from 'react';
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+import Header from "../component/header";
+import App from "./index";
+
+describe('<App />', () => {
+  let wrapper: ShallowWrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(<App />)
+  })
+
+  test('It should match snapshot', () => {
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  test('It should mount following components', () => {
+    expect(wrapper.find(ThemeProvider)).toHaveLength(1);
+    expect(wrapper.find(Header)).toHaveLength(1);
+  })
+})
