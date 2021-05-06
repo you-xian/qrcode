@@ -21,7 +21,9 @@ const isLocalhost = Boolean(
 );
 
 type Config = {
+  // eslint-disable-next-line
   onSuccess?: (registration: ServiceWorkerRegistration) => void;
+  // eslint-disable-next-line
   onUpdate?: (registration: ServiceWorkerRegistration) => void;
 };
 
