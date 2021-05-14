@@ -24,6 +24,7 @@ jobs:
       - name: Cache Node.js modules
         uses: actions/cache@v2
         with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
           path: ~/.npm
           key: v1-qrcode-${{ hashFiles('yarn.lock') }}
           restore-keys: |
@@ -33,6 +34,15 @@ jobs:
       - uses: Borales/actions-yarn@v2.3.0
         with:
           cmd: install
+
+      - uses: Borales/actions-yarn@v2.3.0
+        with:
+          cmd: test:ci
+
+      - name: Code Coverage Report
+        uses: romeovs/lcov-reporter-action@v0.2.20
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: Borales/actions-yarn@v2.3.0
         with:
